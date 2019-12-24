@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './App.css';
 import Slide from './slide/slide';
 import Navigator from './navigator/navigator';
+import Nav from './navs/navs';
 const slides = [
     {
       image: '/assets/img/download.png',
@@ -37,29 +38,36 @@ class App extends Component{
       this.setState({'selectedIndex':slides.length -1 });
     }
   }
+
+  incDecSlide = (type) => {
+    if(type == 'Next'){
+      this.incrementSlide();
+    } else {
+      this.decrementSlide();
+    }
+  }
+
   componentDidMount(){
     setInterval(()=>{
       this.setState({'selectedIndex': (this.state.selectedIndex+1)%slides.length});
     },5000);
   }
   changeSlide = (index) => {
-    console.log(index);
     this.setState({'selectedIndex': index});
   }
   render(){
     return (
       <div className="container-fluid">
         <div className="row" id="container">
-            <div className="col col-sm-6 offset-sm-3 col-md-4 offset-md-4">
-              <Slide slide={slides[this.state.selectedIndex]}></Slide>
-              <span className="nav next" onClick={this.incrementSlide}>Next</span>
-              <span className="nav prev" onClick={this.decrementSlide}>Prev</span>
-            </div>
+          <div className="col col-sm-6 offset-sm-3 col-md-4 offset-md-4">
+            <Slide slide={slides[this.state.selectedIndex]}></Slide>
+            <Nav type={'Next'} incDecSlide={this.incDecSlide}></Nav>
+            <Nav type={'Prev'} incDecSlide={this.incDecSlide}></Nav>
+          </div>
         </div>
         <Navigator changeSlide={this.changeSlide} selectedIndex={this.state.selectedIndex} slides={slides} size={slides.length}></Navigator>
     </div>
     );
   }
-  
 }
 export default App;
