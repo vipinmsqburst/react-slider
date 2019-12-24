@@ -66,7 +66,7 @@ class App extends Component{
           </div>
         </div>
         <Navigator changeSlide={this.changeSlide} selectedIndex={this.state.selectedIndex} slides={slides} size={slides.length}></Navigator>
-    </div>
+      </div>
     );
   }
 }
