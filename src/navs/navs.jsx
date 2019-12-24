@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../App.css';
 
 function Nav(props) {
     return(
-        <span className={ (props.type == 'Next')? 'nav next':'nav prev'} onClick={()=>props.incDecSlide(props.type)}>
+        <span className={ (props.type === 'Next')? 'nav next':'nav prev'} onClick={()=>props.incDecSlide(props.type)}>
             {props.type}
         </span>
     )

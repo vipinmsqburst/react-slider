@@ -40,7 +40,7 @@ class App extends Component{
   }
 
   incDecSlide = (type) => {
-    if(type == 'Next'){
+    if(type === 'Next'){
       this.incrementSlide();
     } else {
       this.decrementSlide();
