@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
 import Slide from './slide/slide';
+import Navigator from './navigator/navigator';
 const slides = [
     {
       image: 'https://wowsciencecamp.org/wp-content/uploads/2018/07/dummy-user-img-1.png',
@@ -41,21 +42,23 @@ class App extends Component{
   componentDidMount(){
     setInterval(()=>{
       this.setState({'selectedIndex': (this.state.selectedIndex+1)%slides.length});
-    },1000);
+    },5000);
+  }
+  changeSlide = (index) => {
+    console.log(index);
+    this.setState({'selectedIndex': index});
   }
   render(){
     return (
       <div className="container-fluid">
-      <div className="row" id="container">
-          <div className="col col-sm-6 offset-sm-3 col-md-4 offset-md-4">
-            <Slide slide={slides[this.state.selectedIndex]}></Slide>
-            <span className="nav next" onClick={this.incrementSlide}>Next</span>
-            <span className="nav prev" onClick={this.decrementSlide}>Prev</span>
-          </div>
-      </div>
-      {/* <div className="selector-container">
-        {this.selectors}
-      </div> */}
+        <div className="row" id="container">
+            <div className="col col-sm-6 offset-sm-3 col-md-4 offset-md-4">
+              <Slide slide={slides[this.state.selectedIndex]}></Slide>
+              <span className="nav next" onClick={this.incrementSlide}>Next</span>
+              <span className="nav prev" onClick={this.decrementSlide}>Prev</span>
+            </div>
+        </div>
+        <Navigator changeSlide={this.changeSlide} selectedIndex={this.state.selectedIndex} slides={slides} size={slides.length}></Navigator>
     </div>
     );
   }
