@@ -25,10 +25,7 @@ class App extends Component{
   
   constructor(){
     super();
-    this.state = {selectedIndex:0}
-    // slides.forEach((slide,i) => {
-    //   this.selectors.push(<span className={this.state.selectedIndex == i? 'selector selected':'selector'} key={i}></span>);
-    // });
+    this.state = {selectedIndex:0};
   }
   
   incrementSlide = () => {
@@ -40,8 +37,11 @@ class App extends Component{
     } else {
       this.setState({'selectedIndex':slides.length -1 });
     }
-    console.log(slides.length);
-    console.log(this.setState.selectedIndex);
+  }
+  componentDidMount(){
+    setInterval(()=>{
+      this.setState({'selectedIndex': (this.state.selectedIndex+1)%slides.length});
+    },1000);
   }
   render(){
     return (

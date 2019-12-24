@@ -3,9 +3,9 @@ import '../App.css';
 // import ReactDOM from 'react-dom';
 
 class Slide extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
     render(){
         return <div className="card" >
             <div className="header">
