@@ -21,8 +21,6 @@ const slides = [
   ];
 
 class App extends Component{
-  elements = [];
-  selectors = [];
   
   constructor(){
     super();
